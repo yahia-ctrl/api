@@ -1,16 +1,22 @@
 version: '3.8'
 services:
   soap:
-    build: ./SOAPService
+    build:
+      context: ./SOAPService
+      dockerfile: Dockerfile  # Adjust if the Dockerfile has a different name or location
     ports:
       - "8001:80"
 
   rest:
-    build: ./apiws
+    build:
+      context: ./apiws/RESTApi
+      dockerfile: Dockerfile
     ports:
       - "8002:80"
 
   grpc:
-    build: ./gRPCProject
+    build:
+      context: ./gRPCProject/GrpcService
+      dockerfile: Dockerfile
     ports:
       - "8003:80"
